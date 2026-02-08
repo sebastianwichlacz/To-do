@@ -14,48 +14,56 @@ SORTABLE_CSS = """
 }
 .sortable-container {
     background-color: transparent;
-    padding: 4px 0;
+    padding: 0;
+    margin: 0 4px;  /* dodaj odstęp między kolumnami */
 }
 .sortable-container-header {
     display: none;
 }
 .sortable-container-body {
-    background-color: #f8f9fa;
+    background-color: transparent;  /* zmień na przezroczyste */
     border-radius: 12px;
     min-height: 80px;
     padding: 8px;
-    border: 2px dashed #e0e0e0;
+    border: 2px dashed #424242;  /* ciemniejszy border dla dark mode */
 }
 .sortable-item, .sortable-item:hover {
-    background-color: #ffffff;
-    color: #1a1a2e;
-    border: 1px solid #e8e8e8;
+    background-color: #2d2d3d;  /* ciemne tło dla dark mode */
+    color: #e0e0e0;  /* jasny tekst */
+    border: 1px solid #404050;
     border-radius: 8px;
     padding: 10px 14px;
     margin: 6px 4px;
     font-size: 14px;
     font-weight: 500;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     transition: box-shadow 0.2s, transform 0.2s;
     line-height: 1.4;
     cursor: grab;
 }
 .sortable-item:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     transform: translateY(-1px);
+    background-color: #353545;
 }
 .sortable-item:active {
     cursor: grabbing;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 """
 
-STATUS_CONFIG = {
-    "To Do": {"color": "#6366f1", "icon": "📋", "bg": "#eef2ff"},
-    "In Progress": {"color": "#f59e0b", "icon": "🔄", "bg": "#fffbeb"},
-    "Done": {"color": "#10b981", "icon": "✅", "bg": "#ecfdf5"},
-}
+# STATUS_CONFIG = {
+#     "To Do": {"color": "#6366f1", "icon": "📋", "bg": "#1e1b4b"},
+#     "In Progress": {"color": "#f59e0b", "icon": "🔄", "bg": "#422006"},
+#     "Done": {"color": "#10b981", "icon": "✅", "bg": "#064e3b"},
+# }
 
+
+STATUS_CONFIG = {
+    "To Do": {"color": "#38bdf8", "icon": "📋", "bg": "linear-gradient(to right, #0c4a6e, #2d2d3d)"},
+    "In Progress": {"color": "#fb923c", "icon": "🔄", "bg": "linear-gradient(to right, #7c2d12, #2d2d3d)"},
+    "Done": {"color": "#4ade80", "icon": "✅", "bg": "linear-gradient(to right, #14532d, #2d2d3d)"},
+}
 
 def _apply_filters(tasks: list[Task], filters: dict) -> list[Task]:
     """Stosuje filtry do listy zadań."""
